@@ -14,9 +14,12 @@ function App() {
     const fetchUser = async () => {
       try {
 
-          const userResponse = await axios.get("https://luxe-store.onrender.com/api/v1/users/getuser", {
-              withCredentials: true
-          });
+        const userResponse = await axios.get("https://your-render-backend-url.onrender.com/api/v1/users/getuser", {
+          withCredentials: true,
+          headers: {
+              'Origin': 'https://e-commerce-4tzdwcrzx-indranil-maitis-projects.vercel.app'
+          }
+      });
           // console.log(userResponse);
           if (userResponse.data.data) {
             dispatch(login(userResponse.data.data));
