@@ -352,10 +352,9 @@ const getCurrentUser = asyncHandler(async(req, res) => {
     } catch (error) {
         console.error("Error in getCurrentUser:", error);
         return res.status(500).json(
-            new Apiresponse(
+            new Apierror(
                 500,
-                null,
-                "Error while fetching user"
+                error.message || "Error fetching dashboard stats"
             )
         );
     }
