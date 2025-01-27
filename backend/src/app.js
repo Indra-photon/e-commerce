@@ -6,7 +6,7 @@ const app = express()
 
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://e-commerce-smoky-omega.vercel.app/'
+    'https://e-commerce-smoky-omega.vercel.app'
 ]
 
 app.use(cors({
