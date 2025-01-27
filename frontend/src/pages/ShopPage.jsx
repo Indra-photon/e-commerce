@@ -85,14 +85,14 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const fetchedProducts = await axios.get("http://localhost:5174/api/v1/products/get-product")
+        const fetchedProducts = await axios.get("https://luxe-store.onrender.com/api/v1/products/get-product")
         // console.log(fetchedProducts.data.data);
         if (fetchedProducts) {
           setProductItems(fetchedProducts.data.data)
           // console.log(ProductItems);
         }
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching products:", error);
       }
     }
 
