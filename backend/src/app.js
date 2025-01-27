@@ -4,24 +4,51 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 
+// const allowedOrigins = [
+//     'http://localhost:5173',
+//     'https://e-commerce-smoky-omega.vercel.app'
+// ]
+
+// app.use(cors({
+//     origin: function(origin, callback) {
+//         console.log("Request Origin:", origin); // Debug log
+        
+//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//             callback(null, true)
+//         } else {
+//             console.log("Blocked Origin:", origin); // Debug log
+//             callback(new Error('Not allowed by CORS'))
+//         }
+//     },
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Authorization', 'Origin'] // Add this
+// }))
+
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://e-commerce-smoky-omega.vercel.app'
+    'http://localhost:5174',
+    'https://e-commerce-smoky-omega.vercel.app',
+    'https://e-commerce-smoky-omega.vercel.app/', // with trailing slash
+    undefined // explicitly allow undefined origins
 ]
 
 app.use(cors({
     origin: function(origin, callback) {
-        console.log("Request Origin:", origin); // Debug log
+        console.log("Request Origin:", origin);
+        console.log("Full Request URL:", req.url); // Add this to see the actual request
+        console.log("Request Method:", req.method); // Add this to see the HTTP method
         
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        // More permissive check
+        if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true)
         } else {
-            console.log("Blocked Origin:", origin); // Debug log
+            console.log("Blocked Origin:", origin);
             callback(new Error('Not allowed by CORS'))
         }
     },
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'Origin'] // Add this
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'X-Requested-With']
 }))
 
 // common middleware
