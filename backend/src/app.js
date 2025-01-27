@@ -5,24 +5,23 @@ import cookieParser from 'cookie-parser'
 const app = express()
 
 const allowedOrigins = [
+    'http://localhost:5173',
     'https://e-commerce-smoky-omega.vercel.app'
 ]
 
 app.use(cors({
     origin: function(origin, callback) {
-        console.log("Request Origin:", origin);
-        console.log("Request Headers:", req.headers);
+        console.log("Request Origin:", origin); // Debug log
         
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true)
         } else {
-            console.log("Blocked Origin:", origin);
+            console.log("Blocked Origin:", origin); // Debug log
             callback(new Error('Not allowed by CORS'))
         }
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Added PATCH
-    allowedHeaders: ['Content-Type', 'Authorization', 'Origin']
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin'] // Add this
 }))
 
 // common middleware
