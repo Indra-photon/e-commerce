@@ -19,14 +19,14 @@ function SignIn() {
         setLoading(true);
         try {
             const loginResponse = await axios.post(
-                'http://localhost:5174/api/v1/users/signin',
+                'https://e-commerce-smoky-omega.vercel.app/api/v1/users/signin',
                 { email, password },
                 { withCredentials: true }
             );
 
             if (loginResponse.data.data) {
                 const userResponse = await axios.get(
-                    'http://localhost:5174/api/v1/users/getuser',
+                    'https://e-commerce-smoky-omega.vercel.app/api/v1/users/getuser',
                     { withCredentials: true }
                 );
 
@@ -51,7 +51,7 @@ function SignIn() {
                 <div className="text-center">
                     <h2 className="text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
                     <p className="mt-2 text-sm text-gray-600">
-                        Don’t have an account?{' '}
+                        Don't have an account?{' '}
                         <a href="/signup" className="font-medium text-blue-600 hover:text-blue-500">
                             Sign up now
                         </a>

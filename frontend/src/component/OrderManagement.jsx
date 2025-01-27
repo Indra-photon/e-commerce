@@ -10,7 +10,7 @@ const OrderManagement = () => {
 
     const fetchOrders = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5174/api/v1/payment/all-orders', {
+            const { data } = await axios.get('https://e-commerce-smoky-omega.vercel.app/api/v1/payment/all-orders', {
                 withCredentials: true
             });
             setOrders(data.data);
@@ -27,7 +27,7 @@ const OrderManagement = () => {
 
     const updateStatus = async (orderId, status) => {
         try {
-            await axios.patch(`http://localhost:5174/api/v1/payments/${orderId}/status`, { status });
+            await axios.patch(`https://e-commerce-smoky-omega.vercel.app/api/v1/payments/${orderId}/status`, { status });
             fetchOrders();
         } catch (error) {
             console.error('Error:', error);

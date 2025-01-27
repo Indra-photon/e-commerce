@@ -67,13 +67,13 @@ function ResetPassword() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5174/api/v1/users/reset-password",
+        "https://e-commerce-smoky-omega.vercel.app/api/v1/users/reset-password",
         {
           token: token,
           newPassword: data.newPassword
         },
         {
-          withCredentials: true  // Added this to handle cookies
+          withCredentials: true
         }
       );
 

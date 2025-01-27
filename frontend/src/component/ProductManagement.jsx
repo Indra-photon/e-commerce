@@ -13,7 +13,7 @@ const ProductManagement = () => {
 
    const fetchProducts = async () => {
        try {
-           const response = await axios.get('http://localhost:5174/api/v1/products/all-products');
+           const response = await axios.get('https://e-commerce-smoky-omega.vercel.app/api/v1/products/all-products');
            setProducts(response.data.data.products);
        } catch (error) {
            console.error('Error:', error);
@@ -34,7 +34,7 @@ const ProductManagement = () => {
    const handleDelete = async (productId) => {
        if (window.confirm('Are you sure you want to delete this product?')) {
            try {
-               await axios.delete(`http://localhost:5174/api/v1/products/${productId}`, {
+               await axios.delete(`https://e-commerce-smoky-omega.vercel.app/api/v1/products/${productId}`, {
                    withCredentials: true
                });
                await fetchProducts();

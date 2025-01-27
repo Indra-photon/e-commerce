@@ -14,7 +14,7 @@ function App() {
     const fetchUser = async () => {
       try {
 
-          const userResponse = await axios.get("http://localhost:5174/api/v1/users/getuser", {
+          const userResponse = await axios.get("https://e-commerce-smoky-omega.vercel.app/api/v1/users/getuser", {
               withCredentials: true
           });
           // console.log(userResponse);

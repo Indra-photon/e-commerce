@@ -6,7 +6,7 @@ import CustomerManagement from './CustomerManagement';
 import ProductManagement from './ProductManagement';
 import OrderManagement from './OrderManagement'
 
-const BASE_URL = 'http://localhost:5174/api/v1'; // Adjust based on your API URL
+const BASE_URL = 'https://e-commerce-smoky-omega.vercel.app/api/v1'; // Adjust based on your API URL
 
 export const useCustomers = (page = 1, limit = 10, customerType = '', customerStatus = '') => {
     const [customers, setCustomers] = useState([]);

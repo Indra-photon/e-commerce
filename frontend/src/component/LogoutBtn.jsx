@@ -12,7 +12,7 @@ function LogoutBtn() {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.post("http://localhost:5174/api/v1/users/logout", {}, {
+            const res = await axios.post("https://e-commerce-smoky-omega.vercel.app/api/v1/users/logout", {}, {
                 withCredentials: true, // Ensure cookies are sent
             });
             if (res.status === 200) {

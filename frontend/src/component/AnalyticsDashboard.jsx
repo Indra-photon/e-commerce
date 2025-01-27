@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 import { Wallet, Users, ShoppingBag, TrendingUp, CreditCard, TrendingDown, ArrowUpRight } from 'lucide-react';
 
-const BASE_URL = 'http://localhost:5174/api/v1';
+const BASE_URL = 'https://e-commerce-smoky-omega.vercel.app/api/v1';
 
 const AnalyticsDashboard = () => {
     const [timeRange, setTimeRange] = useState('month');

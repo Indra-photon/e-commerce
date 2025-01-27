@@ -30,13 +30,13 @@ function AddProductForm({ initialData, onSuccess, onCancel }) {
         try {
             if (initialData) {
                 await axios.patch(
-                    `http://localhost:5174/api/v1/products/update/${initialData._id}`,
+                    `https://e-commerce-smoky-omega.vercel.app/api/v1/products/update/${initialData._id}`,
                     formData,
                     { withCredentials: true }
                 );
             } else {
                 await axios.post(
-                    "http://localhost:5174/api/v1/products/create-product",
+                    "https://e-commerce-smoky-omega.vercel.app/api/v1/products/create-product",
                     formData,
                     { withCredentials: true }
                 );
