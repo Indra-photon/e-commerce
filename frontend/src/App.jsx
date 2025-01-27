@@ -14,7 +14,7 @@ function App() {
     const fetchUser = async () => {
       try {
 
-          const userResponse = await axios.get("/api/v1/users/getuser", {
+          const userResponse = await axios.get("https://luxe-store.onrender.com/api/v1/users/getuser", {
               withCredentials: true
           });
           // console.log(userResponse);
