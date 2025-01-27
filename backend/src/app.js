@@ -11,13 +11,17 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: function(origin, callback) {
+        console.log("Request Origin:", origin); // Debug log
+        
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true)
         } else {
+            console.log("Blocked Origin:", origin); // Debug log
             callback(new Error('Not allowed by CORS'))
         }
     },
-    credentials: true
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'] // Add this
 }))
 
 // common middleware
