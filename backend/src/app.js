@@ -28,24 +28,29 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'https://e-commerce-smoky-omega.vercel.app',
-]
+];
 
 app.use(cors({
     origin: function(origin, callback) {
         console.log("Request Origin:", origin);
         
-        // More permissive check
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true)
-        } else {
-            console.log("Blocked Origin:", origin);
-            callback(new Error('Not allowed by CORS'))
+        // During development, allow requests with no origin
+        if (!origin) {
+            return callback(null, true);
         }
+        
+        // Check if origin is allowed
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        
+        console.log("Blocked Origin:", origin);
+        callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'X-Requested-With']
-}))
+}));
 
 // common middleware
 app.use(express.json({limit: "16kb"}))

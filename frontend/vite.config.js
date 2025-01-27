@@ -9,7 +9,10 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:5174', // Your backend URL
         changeOrigin: true,
-        secure: false
+        secure: false,
+        headers: {
+          'Origin': 'https://e-commerce-smoky-omega.vercel.app'
+        }
       }
     }
   },
