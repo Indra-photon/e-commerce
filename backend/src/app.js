@@ -28,15 +28,11 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'https://e-commerce-smoky-omega.vercel.app',
-    'https://e-commerce-smoky-omega.vercel.app/', // with trailing slash
-    undefined // explicitly allow undefined origins
 ]
 
 app.use(cors({
     origin: function(origin, callback) {
         console.log("Request Origin:", origin);
-        console.log("Full Request URL:", req.url); // Add this to see the actual request
-        console.log("Request Method:", req.method); // Add this to see the HTTP method
         
         // More permissive check
         if (allowedOrigins.includes(origin) || !origin) {
