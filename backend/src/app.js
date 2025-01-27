@@ -27,8 +27,10 @@ const app = express()
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://e-commerce-4tzdwcrzx-indranil-maitis-projects.vercel.app'
-]
+    'https://e-commerce-smoky-omega.vercel.app',
+    'https://e-commerce-4tzdwcrzx-indranil-maitis-projects.vercel.app',
+    'https://luxe-store.onrender.com'
+];
 
 app.use(cors({
     origin: function(origin, callback) {

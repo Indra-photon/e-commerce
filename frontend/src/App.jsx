@@ -13,18 +13,18 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-
-        const userResponse = await axios.get("https://your-render-backend-url.onrender.com/api/v1/users/getuser", {
-          withCredentials: true,
-          headers: {
-              'Origin': 'https://e-commerce-4tzdwcrzx-indranil-maitis-projects.vercel.app'
-          }
-      });
-          // console.log(userResponse);
+          const userResponse = await axios.get("https://luxe-store.onrender.com/api/v1/users/getuser", {
+              withCredentials: true,
+              headers: {
+                  'Origin': 'https://e-commerce-smoky-omega.vercel.app'
+              }
+          });
+          
           if (userResponse.data.data) {
             dispatch(login(userResponse.data.data));
           }
       } catch (error) {
+        console.error("Error fetching user:", error);
         dispatch(logout());
       } finally {
         setLoading(false);
@@ -32,7 +32,7 @@ function App() {
     };
   
     fetchUser();
-  }, []);
+}, []);
 
   return !loading ? (
     <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
