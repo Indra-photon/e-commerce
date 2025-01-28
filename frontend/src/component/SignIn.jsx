@@ -57,9 +57,14 @@ function SignIn() {
             if (loginResponse.data.data) {
                 // Get the cookie value directly from document.cookie
                 const cookies = document.cookie.split(';');
+                console.log(cookies);
+                
                 const accessToken = cookies
                     .find(cookie => cookie.trim().startsWith('accessToken='))
                     ?.split('=')[1];
+
+                    console.log(accessToken);
+                    
     
                 const userResponse = await axios.get(
                     'https://luxe-store.onrender.com/api/v1/users/getuser',
