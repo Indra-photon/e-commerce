@@ -33,7 +33,7 @@ const app = express()
 // ];
 
 app.use(cors({
-    origin: "*",
+    origin: "https://e-commerce-smoky-omega.vercel.app",
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
