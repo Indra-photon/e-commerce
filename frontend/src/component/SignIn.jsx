@@ -18,6 +18,7 @@ function SignIn() {
     const handleLogin = async ({ email, password }) => {
         setLoading(true);
         try {
+            console.log('Attempting to send request to:', 'https://luxe-store.onrender.com/api/v1/users/signin');
             const loginResponse = await axios.post(
                 'https://luxe-store.onrender.com/api/v1/users/signin',
                 { email, password },
