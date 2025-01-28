@@ -7,8 +7,6 @@ import {
 import { Wallet, Users, ShoppingBag, TrendingUp, CreditCard, TrendingDown, ArrowUpRight } from 'lucide-react';
 import axios from 'axios';
 
-const BASE_URL = 'https://luxe-store.onrender.com/api/v1';
-
 const AnalyticsDashboard = () => {
     const [timeRange, setTimeRange] = useState('month');
     const [stats, setStats] = useState({

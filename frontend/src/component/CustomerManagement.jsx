@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const CustomerManagement = () => {
@@ -24,8 +25,9 @@ const CustomerManagement = () => {
                     ...(customerType && { customerType })
                 });
  
-                const response = await fetch(`${BASE_URL}/users/customers?${params}`, {
-                    credentials: 'include'
+                const response = await axios.get(`${BASE_URL}/users/customers`, {
+                    params: new URLSearchParams(params).toString(),
+                    withCredentials: true
                 });
  
                 if (!response.ok) throw new Error('Failed to fetch customers');

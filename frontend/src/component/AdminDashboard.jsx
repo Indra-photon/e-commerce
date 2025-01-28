@@ -6,109 +6,109 @@ import CustomerManagement from './CustomerManagement';
 import ProductManagement from './ProductManagement';
 import OrderManagement from './OrderManagement'
 
-const BASE_URL = 'https://luxe-store.onrender.com/api/v1'; // Adjust based on your API URL
+// const BASE_URL = 'https://luxe-store.onrender.com/api/v1'; // Adjust based on your API URL
 
-export const useCustomers = (page = 1, limit = 10, customerType = '', customerStatus = '') => {
-    const [customers, setCustomers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [totalPages, setTotalPages] = useState(0);
+// export const useCustomers = (page = 1, limit = 10, customerType = '', customerStatus = '') => {
+//     const [customers, setCustomers] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+//     const [totalPages, setTotalPages] = useState(0);
 
-    useEffect(() => {
-        const fetchCustomers = async () => {
-            try {
-                setLoading(true);
-                const queryParams = new URLSearchParams({
-                    page,
-                    limit,
-                    ...(customerType && { customerType }),
-                    ...(customerStatus && { customerStatus })
-                });
+//     useEffect(() => {
+//         const fetchCustomers = async () => {
+//             try {
+//                 setLoading(true);
+//                 const queryParams = new URLSearchParams({
+//                     page,
+//                     limit,
+//                     ...(customerType && { customerType }),
+//                     ...(customerStatus && { customerStatus })
+//                 });
 
-                const response = await fetch(`${BASE_URL}/users/customers?${queryParams}`, {
-                    credentials: 'include' // For sending cookies
-                });
+//                 const response = await fetch(`${BASE_URL}/users/customers?${queryParams}`, {
+//                     credentials: 'include' // For sending cookies
+//                 });
 
-                if (!response.ok) throw new Error('Failed to fetch customers');
+//                 if (!response.ok) throw new Error('Failed to fetch customers');
 
-                const data = await response.json();
-                setCustomers(data.data.customers);
-                setTotalPages(data.data.totalPages);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+//                 const data = await response.json();
+//                 setCustomers(data.data.customers);
+//                 setTotalPages(data.data.totalPages);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
 
-        fetchCustomers();
-    }, [page, limit, customerType, customerStatus]);
+//         fetchCustomers();
+//     }, [page, limit, customerType, customerStatus]);
 
-    return { customers, loading, error, totalPages };
-};
+//     return { customers, loading, error, totalPages };
+// };
 
-export const useCustomerAnalytics = (userId) => {
-    const [analytics, setAnalytics] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+// export const useCustomerAnalytics = (userId) => {
+//     const [analytics, setAnalytics] = useState(null);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchAnalytics = async () => {
-            try {
-                setLoading(true);
-                const response = await fetch(`${BASE_URL}/users/customers/${userId}/analytics`, {
-                    credentials: 'include'
-                });
+//     useEffect(() => {
+//         const fetchAnalytics = async () => {
+//             try {
+//                 setLoading(true);
+//                 const response = await fetch(`${BASE_URL}/users/customers/${userId}/analytics`, {
+//                     credentials: 'include'
+//                 });
 
-                if (!response.ok) throw new Error('Failed to fetch customer analytics');
+//                 if (!response.ok) throw new Error('Failed to fetch customer analytics');
 
-                const data = await response.json();
-                setAnalytics(data.data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
+//                 const data = await response.json();
+//                 setAnalytics(data.data);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
 
-        if (userId) {
-            fetchAnalytics();
-        }
-    }, [userId]);
+//         if (userId) {
+//             fetchAnalytics();
+//         }
+//     }, [userId]);
 
-    return { analytics, loading, error };
-};
+//     return { analytics, loading, error };
+// };
 
-export const useUpdateCustomerStatus = () => {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+// export const useUpdateCustomerStatus = () => {
+//     const [loading, setLoading] = useState(false);
+//     const [error, setError] = useState(null);
 
-    const updateStatus = async (userId, customerStatus, customerType) => {
-        try {
-            setLoading(true);
-            const response = await fetch(`${BASE_URL}/users/customers/${userId}/status`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include',
-                body: JSON.stringify({ customerStatus, customerType })
-            });
+//     const updateStatus = async (userId, customerStatus, customerType) => {
+//         try {
+//             setLoading(true);
+//             const response = await fetch(`${BASE_URL}/users/customers/${userId}/status`, {
+//                 method: 'PATCH',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 credentials: 'include',
+//                 body: JSON.stringify({ customerStatus, customerType })
+//             });
 
-            if (!response.ok) throw new Error('Failed to update customer status');
+//             if (!response.ok) throw new Error('Failed to update customer status');
 
-            const data = await response.json();
-            return data.data;
-        } catch (err) {
-            setError(err.message);
-            throw err;
-        } finally {
-            setLoading(false);
-        }
-    };
+//             const data = await response.json();
+//             return data.data;
+//         } catch (err) {
+//             setError(err.message);
+//             throw err;
+//         } finally {
+//             setLoading(false);
+//         }
+//     };
 
-    return { updateStatus, loading, error };
-};
+//     return { updateStatus, loading, error };
+// };
 
 const AdminDashboard = () => {
     const [activeMenu, setActiveMenu] = useState('analytics');
