@@ -36,6 +36,7 @@ function SignIn() {
                 }
             }
         } catch (error) {
+            console.log(error);
             const errorMessage = error.response?.data?.message || 'Login failed';
             toast.error(errorMessage);
             dispatch(logout());
