@@ -151,10 +151,8 @@ const loginUser = asyncHandler(async (req, res) =>{
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
     const options = {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',  // Add this for cross-origin
-        path: '/'          // Add this to ensure cookie accessibility
+        httpOnly: false,
+        secure: true
     }
 
     return res
@@ -165,8 +163,7 @@ const loginUser = asyncHandler(async (req, res) =>{
         new Apiresponse(
             200, 
             {
-                user: loggedInUser,
-                accessToken  // Add this line to include token in response
+                user: loggedInUser
             },
             "User logged In Successfully"
         )
@@ -325,7 +322,7 @@ const resetForgotPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrentUser = asyncHandler(async(req, res) => {
-    console.log('Login request headers:', req.headers);
+    
     return res
     .status(200)
     .json(new Apiresponse(

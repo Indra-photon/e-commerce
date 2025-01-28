@@ -31,8 +31,6 @@ function SignIn() {
                 console.log("Token received:", accessToken);
 
                 // Get the token from cookies
-                console.log(`document.cookies: ${document.cookie}`);
-                
                 const token = document.cookie
                 .split(';')
                 .find(c => c.trim().startsWith('accessToken='))
