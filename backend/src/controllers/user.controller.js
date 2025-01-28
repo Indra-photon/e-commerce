@@ -152,7 +152,9 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: 'none',  // Add this for cross-origin
+        path: '/'          // Add this to ensure cookie accessibility
     }
 
     return res
@@ -163,7 +165,8 @@ const loginUser = asyncHandler(async (req, res) =>{
         new Apiresponse(
             200, 
             {
-                user: loggedInUser
+                user: loggedInUser,
+                accessToken  // Add this line to include token in response
             },
             "User logged In Successfully"
         )
