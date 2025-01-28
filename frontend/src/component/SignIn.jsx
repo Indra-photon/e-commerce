@@ -26,14 +26,14 @@ function SignIn() {
 
             if (loginResponse.data.data) {
                 // Get the token from cookies
-                console.log(document.cookie);
+                // console.log(document.cookie);
                 const token = document.cookie
                 .split(';')
                 .find(c => c.trim().startsWith('accessToken='))
                 ?.split('=')[1];
                 
             // Log the token to verify we got it
-                console.log("Token from cookie:", token);
+                // console.log("Token from cookie:", token);
 
                 const userResponse = await axios.get(
                     'https://luxe-store.onrender.com/api/v1/users/getuser',

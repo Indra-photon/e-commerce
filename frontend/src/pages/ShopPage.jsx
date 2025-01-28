@@ -104,6 +104,9 @@ const ShopPage = () => {
     try {
       const addCart = await axios.post("https://luxe-store.onrender.comapi/v1/carts/addCart", {productId}, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
       if (addCart) {
         alert("Product added to cart successfully")
