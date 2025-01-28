@@ -6,8 +6,8 @@ import { User } from "../models/user.models.js";
 export const verifyJWT = asyncHandler(async(req, _, next) => {
     try {
         console.log("Cookies:", req.cookies);
-        console.log("Headers:", req.headers);
-        console.log("Auth Header:", req.headers.authorization);
+        // console.log("Headers:", req.headers);
+        // console.log("Auth Header:", req.headers.authorization);
         
         const token = req.cookies?.accessToken || req.headers.authorization?.replace("Bearer ", "")
         console.log("Token:", token);
