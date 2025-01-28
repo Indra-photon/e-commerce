@@ -4,39 +4,11 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 
-// const allowedOrigins = [
-//     'http://localhost:5173',
-//     'https://e-commerce-smoky-omega.vercel.app'
-// ]
-
-// app.use(cors({
-//     origin: function(origin, callback) {
-//         console.log("Request Origin:", origin); // Debug log
-        
-//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-//             callback(null, true)
-//         } else {
-//             console.log("Blocked Origin:", origin); // Debug log
-//             callback(new Error('Not allowed by CORS'))
-//         }
-//     },
-//     credentials: true,
-//     allowedHeaders: ['Content-Type', 'Authorization', 'Origin'] // Add this
-// }))
-
-// const allowedOrigins = [
-//     'http://localhost:5173',
-//     'http://localhost:5174',
-//     'https://e-commerce-smoky-omega.vercel.app',
-//     'https://e-commerce-4tzdwcrzx-indranil-maitis-projects.vercel.app',
-//     'https://luxe-store.onrender.com'
-// ];
-
 app.use(cors({
     origin: "https://e-commerce-smoky-omega.vercel.app",
     credentials: true,
-    // methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    // allowedHeaders: ['Content-Type', 'Authorization']
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 // common middleware

@@ -15,29 +15,69 @@ function SignIn() {
         formState: { errors },
     } = useForm();
 
+    // const handleLogin = async ({ email, password }) => {
+    //     setLoading(true);
+    //     try {
+    //         console.log('Attempting to send request to:', 'https://luxe-store.onrender.com/api/v1/users/signin');
+    //         const loginResponse = await axios.post(
+    //             'https://luxe-store.onrender.com/api/v1/users/signin',
+    //             { email, password },
+    //             { withCredentials: true }
+    //         );
+
+    //         if (loginResponse.data.data) {
+    //             const userResponse = await axios.get(
+    //                 'https://luxe-store.onrender.com/api/v1/users/getuser',
+    //                 { withCredentials: true }
+    //             );
+
+    //             if (userResponse.data.data) {
+    //                 toast.success('Welcome back!');
+    //                 dispatch(login(userResponse.data.data));
+    //             }
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //         const errorMessage = error.response?.data?.message || 'Login failed';
+    //         toast.error(errorMessage);
+    //         dispatch(logout());
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
     const handleLogin = async ({ email, password }) => {
         setLoading(true);
         try {
-            console.log('Attempting to send request to:', 'https://luxe-store.onrender.com/api/v1/users/signin');
+            console.log('Sending login data:', { email, password });
             const loginResponse = await axios.post(
                 'https://luxe-store.onrender.com/api/v1/users/signin',
                 { email, password },
-                { withCredentials: true }
+                { 
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
             );
-
+    
+            console.log('Login response:', loginResponse);
+    
             if (loginResponse.data.data) {
                 const userResponse = await axios.get(
                     'https://luxe-store.onrender.com/api/v1/users/getuser',
                     { withCredentials: true }
                 );
-
+    
+                console.log('User response:', userResponse);
+    
                 if (userResponse.data.data) {
                     toast.success('Welcome back!');
                     dispatch(login(userResponse.data.data));
                 }
             }
         } catch (error) {
-            console.log(error);
+            console.log('Full error object:', error);
+            console.log('Error response:', error.response?.data);
             const errorMessage = error.response?.data?.message || 'Login failed';
             toast.error(errorMessage);
             dispatch(logout());
@@ -45,7 +85,6 @@ function SignIn() {
             setLoading(false);
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
             <Toaster position="top-center" reverseOrder={false} />
