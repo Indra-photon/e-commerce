@@ -60,7 +60,7 @@ function SignIn() {
                 }
             );
     
-            console.log('Login response:', loginResponse);
+            console.log('Login response:', loginResponse.data.data);
     
             if (loginResponse.data.data) {
                 const userResponse = await axios.get(

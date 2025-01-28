@@ -8,7 +8,7 @@ app.use(cors({
     origin: "https://e-commerce-smoky-omega.vercel.app",
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }))
 
 // common middleware
