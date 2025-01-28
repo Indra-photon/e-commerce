@@ -79,7 +79,6 @@ export const useCustomerAnalytics = (userId) => {
     return { analytics, loading, error };
 };
 
-// Hook for updating customer status
 export const useUpdateCustomerStatus = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

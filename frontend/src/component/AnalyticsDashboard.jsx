@@ -5,6 +5,7 @@ import {
     Cell
 } from 'recharts';
 import { Wallet, Users, ShoppingBag, TrendingUp, CreditCard, TrendingDown, ArrowUpRight } from 'lucide-react';
+import axios from 'axios';
 
 const BASE_URL = 'https://luxe-store.onrender.com/api/v1';
 
@@ -35,7 +36,7 @@ const AnalyticsDashboard = () => {
         const fetchDashboardStats = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`${BASE_URL}/users/dashboard-stats`, {
+                const response = await axios.fetch(`${BASE_URL}/users/dashboard-stats`, {
                     credentials: 'include',
                     headers: {
                         'Accept': 'application/json',
