@@ -33,7 +33,7 @@ const handleFileChange = (e) => {
 
   const update = async ({ username, email, fullname, address }) => {
     try {
-      const updateResponse = await axios.patch("http://localhost:5174/api/v1/users/update-account", {
+      const updateResponse = await axios.patch("https://luxe-store.onrender.com/api/v1/users/update-account", {
         username,
         email,
         fullname,
@@ -64,7 +64,7 @@ const handleFileChange = (e) => {
       formData.append('avatar', avatar); // This matches the field name expected by the backend
   
       const updateResponse = await axios.patch(
-        "http://localhost:5174/api/v1/users/update-avatar",
+        "https://luxe-store.onrender.com/api/v1/users/update-avatar",
         formData,
         {
           headers: { 

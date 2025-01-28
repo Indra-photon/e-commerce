@@ -36,7 +36,7 @@ function ResetPassword() {
   //     // console.log("Password:", data.newPassword);
 
   //     const res = await axios.post(
-  //       "http://localhost:5174/api/v1/users/reset-password",
+  //       "https://luxe-store.onrender.comapi/v1/users/reset-password",
   //       {
   //         token: token,
   //         newPassword: data.newPassword
@@ -67,7 +67,7 @@ function ResetPassword() {
 
     try {
       const res = await axios.post(
-        "https://e-commerce-smoky-omega.vercel.app/api/v1/users/reset-password",
+        "https://luxe-store.onrender.com/api/v1/users/reset-password",
         {
           token: token,
           newPassword: data.newPassword

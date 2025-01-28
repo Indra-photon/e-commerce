@@ -18,7 +18,7 @@ const Cart = () => {
         setError(null);
         
         const response = await axios.get(
-          "http://localhost:5174/api/v1/carts/getuserCart",
+          "https://luxe-store.onrender.com/api/v1/carts/getuserCart",
           { withCredentials: true }
         );
   
@@ -43,7 +43,7 @@ const Cart = () => {
   const removeItem = async (productId) => {
     try {
       await axios.delete(
-        `http://localhost:5174/api/v1/carts/product/${productId}`,
+        `https://luxe-store.onrender.com/api/v1/carts/product/${productId}`,
         { withCredentials: true }
       );
       setCartItems((prevItems) =>
@@ -58,7 +58,7 @@ const Cart = () => {
     if (newQty < 1) return;
     try {
       await axios.patch(
-        `http://localhost:5174/api/v1/carts/product/${productId}`,
+        `https://luxe-store.onrender.com/api/v1/carts/product/${productId}`,
         { qty: newQty },
         { withCredentials: true }
       );
@@ -108,7 +108,7 @@ const Cart = () => {
 
       // 2. Create order on backend
       const orderResponse = await axios.post(
-        "http://localhost:5174/api/v1/payment/create-order",
+        "https://luxe-store.onrender.com/api/v1/payment/create-order",
         {
           cartItems,
           totalAmount: calculateSubtotal()
@@ -132,7 +132,7 @@ const Cart = () => {
           try {
             // 4. Verify payment on backend
             const verifyResponse = await axios.post(
-              "http://localhost:5174/api/v1/payment/verify",
+              "https://luxe-store.onrender.com/api/v1/payment/verify",
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

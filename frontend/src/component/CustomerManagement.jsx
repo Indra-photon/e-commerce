@@ -11,7 +11,7 @@ const CustomerManagement = () => {
     const [error, setError] = useState(null);
     const [totalPages, setTotalPages] = useState(0);
 
-    const BASE_URL = 'https://e-commerce-smoky-omega.vercel.app/api/v1';
+    const BASE_URL = 'https://luxe-store.onrender.com/api/v1';
  
     useEffect(() => {
         const fetchCustomers = async () => {

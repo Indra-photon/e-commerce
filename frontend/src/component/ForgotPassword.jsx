@@ -17,7 +17,7 @@ function ForgotPassword() {
     const loadingToast = toast.loading("Sending reset link...");
 
     try {
-      const res = await axios.post("https://e-commerce-smoky-omega.vercel.app/api/v1/users/forgot-password", {
+      const res = await axios.post("https://luxe-store.onrender.com/api/v1/users/forgot-password", {
         email,
       });
 

@@ -20,7 +20,7 @@ function SignUp() {
 
     const loadingToast = toast.loading("Creating your account...");
     try {
-      const res = await axios.post("https://e-commerce-smoky-omega.vercel.app/api/v1/users/register", {
+      const res = await axios.post("https://luxe-store.onrender.com/api/v1/users/register", {
         username,
         email,
         fullname,

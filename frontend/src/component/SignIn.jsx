@@ -19,14 +19,14 @@ function SignIn() {
         setLoading(true);
         try {
             const loginResponse = await axios.post(
-                'https://e-commerce-smoky-omega.vercel.app/api/v1/users/signin',
+                'https://luxe-store.onrender.com/api/v1/users/signin',
                 { email, password },
                 { withCredentials: true }
             );
 
             if (loginResponse.data.data) {
                 const userResponse = await axios.get(
-                    'https://e-commerce-smoky-omega.vercel.app/api/v1/users/getuser',
+                    'https://luxe-store.onrender.com/api/v1/users/getuser',
                     { withCredentials: true }
                 );
 
