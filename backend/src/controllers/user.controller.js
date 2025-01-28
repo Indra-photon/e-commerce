@@ -115,8 +115,8 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     const {email, username, password} = req.body
     // console.log(email);
-    console.log('Login request body:', req.body);
-    console.log('Login request headers:', req.headers);
+    // console.log('Login request body:', req.body);
+    // console.log('Login request headers:', req.headers);
 
     if (!username && !email) {
         throw new Apierror(400, "username or email is required")
@@ -321,46 +321,47 @@ const resetForgotPassword = asyncHandler(async (req, res) => {
     );
 });
 
-// const getCurrentUser = asyncHandler(async(req, res) => {
-//     return res
-//     .status(200)
-//     .json(new Apiresponse(
-//         200,
-//         req.user,
-//         "User fetched successfully"
-//     ))
-// })
-
 const getCurrentUser = asyncHandler(async(req, res) => {
-    try {
-        // Check if user exists in request
-        if (!req.user) {
-            console.error("User not found in request");
-            return res.status(401).json(
-                new Apiresponse(401, null, "User not found")
-            );
-        }
+    console.log('Login request headers:', req.headers);
+    return res
+    .status(200)
+    .json(new Apiresponse(
+        200,
+        req.user,
+        "User fetched successfully"
+    ))
+})
 
-        // Log successful request
-        console.log("User fetched:", req.user._id);
+// const getCurrentUser = asyncHandler(async(req, res) => {
+//     try {
+//         // Check if user exists in request
+//         if (!req.user) {
+//             console.error("User not found in request");
+//             return res.status(401).json(
+//                 new Apiresponse(401, null, "User not found")
+//             );
+//         }
+
+//         // Log successful request
+//         console.log("User fetched:", req.user._id);
         
-        return res.status(200).json(
-            new Apiresponse(
-                200,
-                req.user,
-                "User fetched successfully"
-            )
-        );
-    } catch (error) {
-        console.error("Error in getCurrentUser:", error);
-        return res.status(500).json(
-            new Apierror(
-                500,
-                error.message || "Error fetching dashboard stats"
-            )
-        );
-    }
-});
+//         return res.status(200).json(
+//             new Apiresponse(
+//                 200,
+//                 req.user,
+//                 "User fetched successfully"
+//             )
+//         );
+//     } catch (error) {
+//         console.error("Error in getCurrentUser:", error);
+//         return res.status(500).json(
+//             new Apierror(
+//                 500,
+//                 error.message || "Error fetching dashboard stats"
+//             )
+//         );
+//     }
+// });
 
 const updateAccountDetails = asyncHandler(async(req, res) => {
     const {username, email, fullname, address} = req.body
