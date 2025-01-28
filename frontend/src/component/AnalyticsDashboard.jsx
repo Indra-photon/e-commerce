@@ -30,32 +30,26 @@ const AnalyticsDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchDashboardStats = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get('https://luxe-store.onrender.com/api/v1/users/dashboard-stats', {
-                    withCredentials: true,
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || 'Failed to fetch dashboard stats');
+    const fetchDashboardStats = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.get('https://luxe-store.onrender.com/api/v1/users/dashboard-stats', {
+                withCredentials: true,
+                headers: {
+                    'Accept': 'application/json',
                 }
+            });
 
-                const data = await response.json();
-                setStats(data.data);
-            } catch (err) {
-                setError(err.message);
-                console.error('Dashboard fetch error:', err);
-            } finally {
-                setLoading(false);
-            }
-        };
+            setStats(response.data.data);
+        } catch (err) {
+            setError(err.message);
+            console.error('Dashboard fetch error:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchDashboardStats();
     }, [timeRange]);
 
