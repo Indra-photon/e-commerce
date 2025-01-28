@@ -15,9 +15,9 @@ function App() {
       try {
           const userResponse = await axios.get("https://luxe-store.onrender.com/api/v1/users/getuser", {
               withCredentials: true,
-              headers: {
-                  'Origin': 'https://e-commerce-smoky-omega.vercel.app'
-              }
+              // headers: {
+              //     'Origin': 'https://e-commerce-smoky-omega.vercel.app'
+              // }
           });
           
           if (userResponse.data.data) {
