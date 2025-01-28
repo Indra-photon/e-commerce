@@ -43,7 +43,7 @@ const ShopPage = () => {
     const fetchProducts = async () => {
       try {
         const fetchedProducts = await axios.get("https://luxe-store.onrender.com/api/v1/products/get-product")
-        console.log(fetchedProducts.data.data);
+        // console.log(fetchedProducts.data.data);
         if (fetchedProducts) {
           setProductItems(fetchedProducts.data.data)
           // console.log(ProductItems);
@@ -61,9 +61,6 @@ const ShopPage = () => {
     try {
       const addCart = await axios.post("https://luxe-store.onrender.comapi/v1/carts/addCart", {productId}, {
         withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
       })
       if (addCart) {
         alert("Product added to cart successfully")

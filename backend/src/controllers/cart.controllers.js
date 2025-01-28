@@ -7,6 +7,8 @@ import { Product } from "../models/product.models.js"
 // Add item to cart
 const addToCart = asyncHandler(async (req, res) => {
     const { productId, qty = 1 } = req.body;
+    console.log(productId);
+    
 
     if (!productId) {
         throw new Apierror(400, "Product ID is required");
