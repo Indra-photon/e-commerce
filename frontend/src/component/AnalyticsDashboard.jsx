@@ -36,8 +36,8 @@ const AnalyticsDashboard = () => {
         const fetchDashboardStats = async () => {
             try {
                 setLoading(true);
-                const response = await axios.fetch(`${BASE_URL}/users/dashboard-stats`, {
-                    credentials: 'include',
+                const response = await axios.get('https://luxe-store.onrender.com/api/v1/users/dashboard-stats', {
+                    withCredentials: true,
                     headers: {
                         'Accept': 'application/json',
                     }
