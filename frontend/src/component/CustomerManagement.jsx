@@ -26,17 +26,15 @@ const CustomerManagement = () => {
                 });
  
                 const response = await axios.get(`${BASE_URL}/users/customers`, {
-                    params: new URLSearchParams(params).toString(),
+                    params,
                     withCredentials: true
                 });
  
-                if (!response.ok) throw new Error('Failed to fetch customers');
- 
-                const data = await response.json();
-                setCustomers(data.data.customers);
-                setTotalPages(data.data.totalPages);
+                setCustomers(response.data.data.customers);
+                setTotalPages(response.data.data.totalPages);
             } catch (err) {
                 setError(err.message);
+                console.error('Error fetching customers:', err);
             } finally {
                 setLoading(false);
             }
