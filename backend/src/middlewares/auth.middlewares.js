@@ -5,11 +5,14 @@ import { User } from "../models/user.models.js";
 
 export const verifyJWT = asyncHandler(async(req, _, next) => {
     try {
-        console.log(req.cookies);
-        console.log(req.header);
+        console.log("Cookies:", req.cookies);
+        // Fix: Use req.headers instead of req.header
+        console.log("Headers:", req.headers);
+        console.log("Auth Header:", req.headers.authorization);
         
-        const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
-        console.log(token);
+        const token = req.cookies?.accessToken || req.headers.authorization?.replace("Bearer ", "")
+        console.log("Token:", token);
+        
         if (!token) {
             throw new Apierror(401, "Unauthorized request")
         }

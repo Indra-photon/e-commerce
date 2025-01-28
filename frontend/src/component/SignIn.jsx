@@ -25,9 +25,17 @@ function SignIn() {
             );
 
             if (loginResponse.data.data) {
+                const accessToken = loginResponse.data.data.accessToken;
+                console.log("Token received:", accessToken);
+
                 const userResponse = await axios.get(
                     'https://luxe-store.onrender.com/api/v1/users/getuser',
-                    { withCredentials: true }
+                    { 
+                        withCredentials: true,
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`
+                        }
+                    }
                 );
 
                 if (userResponse.data.data) {
@@ -45,52 +53,6 @@ function SignIn() {
         }
     };
 
-
-    // const handleLogin = async ({ email, password }) => {
-    //     setLoading(true);
-    //     try {
-    //         const loginResponse = await axios.post(
-    //             'https://luxe-store.onrender.com/api/v1/users/signin',
-    //             { email, password },
-    //             { withCredentials: true }
-    //         );
-    
-    //         if (loginResponse.data.data) {
-    //             // Get the cookie value directly from document.cookie
-    //             const cookies = document.cookie.split(';');
-    //             console.log(cookies);
-                
-    //             const accessToken = cookies
-    //                 .find(cookie => cookie.trim().startsWith('accessToken='))
-    //                 ?.split('=')[1];
-
-    //                 console.log(accessToken);
-                    
-    
-    //             const userResponse = await axios.get(
-    //                 'https://luxe-store.onrender.com/api/v1/users/getuser',
-    //                 { 
-    //                     withCredentials: true,
-    //                     headers: {
-    //                         'Authorization': `Bearer ${accessToken}` // Explicitly send token
-    //                     }
-    //                 }
-    //             );
-    
-    //             if (userResponse.data.data) {
-    //                 toast.success('Welcome back!');
-    //                 dispatch(login(userResponse.data.data));
-    //             }
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //         const errorMessage = error.response?.data?.message || 'Login failed';
-    //         toast.error(errorMessage);
-    //         dispatch(logout());
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
             <Toaster position="top-center" reverseOrder={false} />
