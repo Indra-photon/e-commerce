@@ -59,7 +59,7 @@ const ShopPage = () => {
 
   const addCart = async (productId) => {
     try {
-      const addCart = await axios.post("https://luxe-store.onrender.comapi/v1/carts/addCart", {productId}, {
+      const addCart = await axios.post("https://luxe-store.onrender.com/api/v1/carts/addCart", {productId}, {
         withCredentials: true,
       })
       if (addCart) {
