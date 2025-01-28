@@ -25,6 +25,12 @@ function Header() {
       icon: <User size={18} />
     },
     {
+      name: 'Admin',
+      slug: "/admin-dashboard",
+      active: authStatus,
+      icon: <User size={18} />
+    },
+    {
       name: 'Cart',
       slug: "/cart",
       active: authStatus,
