@@ -48,27 +48,28 @@ function SignIn() {
     const handleLogin = async ({ email, password }) => {
         setLoading(true);
         try {
-            console.log('Sending login data:', { email, password });
             const loginResponse = await axios.post(
                 'https://luxe-store.onrender.com/api/v1/users/signin',
                 { email, password },
-                { 
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
+                { withCredentials: true }
             );
     
-            console.log('Login response:', loginResponse.data.data);
-    
             if (loginResponse.data.data) {
+                // Get the cookie value directly from document.cookie
+                const cookies = document.cookie.split(';');
+                const accessToken = cookies
+                    .find(cookie => cookie.trim().startsWith('accessToken='))
+                    ?.split('=')[1];
+    
                 const userResponse = await axios.get(
                     'https://luxe-store.onrender.com/api/v1/users/getuser',
-                    { withCredentials: true }
+                    { 
+                        withCredentials: true,
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}` // Explicitly send token
+                        }
+                    }
                 );
-    
-                console.log('User response:', userResponse);
     
                 if (userResponse.data.data) {
                     toast.success('Welcome back!');
@@ -76,8 +77,7 @@ function SignIn() {
                 }
             }
         } catch (error) {
-            console.log('Full error object:', error);
-            console.log('Error response:', error.response?.data);
+            console.log(error);
             const errorMessage = error.response?.data?.message || 'Login failed';
             toast.error(errorMessage);
             dispatch(logout());
