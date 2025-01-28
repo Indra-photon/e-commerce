@@ -25,12 +25,8 @@ function SignIn() {
             );
 
             if (loginResponse.data.data) {
-                console.log(loginResponse.data);
-                console.log(loginResponse.data.data);
-                const accessToken = loginResponse.data.data.accessToken;
-                console.log("Token received:", accessToken);
-
                 // Get the token from cookies
+                console.log(document.cookie);
                 const token = document.cookie
                 .split(';')
                 .find(c => c.trim().startsWith('accessToken='))
