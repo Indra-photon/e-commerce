@@ -40,7 +40,7 @@ function SignIn() {
                     { 
                         withCredentials: true,
                         headers: {
-                            Authorization: `Bearer ${accessToken}`
+                            Authorization: `Bearer ${token}`
                         }
                     }
                 );
