@@ -22,9 +22,11 @@ function App() {
           
           if (userResponse.data.data) {
             dispatch(login(userResponse.data.data));
+          } else {
+            dispatch(logout());
           }
       } catch (error) {
-        console.error("Error fetching user:", error);
+        // console.error("Error fetching user:", error);
         dispatch(logout());
       } finally {
         setLoading(false);
