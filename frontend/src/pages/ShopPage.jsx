@@ -27,49 +27,6 @@ const ShopPage = () => {
     
   ];
 
-  const products = [
-    { 
-      id: 1, 
-      name: 'Premium Cotton Tee', 
-      price: 29.99, 
-      image: 'https://cdn.pixabay.com/photo/2016/11/23/18/12/bag-1854148_1280.jpg',
-      discount: '20% OFF'
-    },
-    { 
-      id: 2, 
-      name: 'Designer Denim', 
-      price: 89.99, 
-      image: 'https://cdn.pixabay.com/photo/2014/07/31/23/42/handbag-407198_1280.jpg'
-    },
-    { 
-      id: 3, 
-      name: 'Summer Collection', 
-      price: 59.99, 
-      image: 'https://cdn.pixabay.com/photo/2015/11/20/03/53/package-1052370_640.jpg',
-      discount: 'NEW'
-    },
-    { 
-      id: 4, 
-      name: 'Urban Jacket', 
-      price: 199.99, 
-      image: 'https://cdn.pixabay.com/photo/2015/05/14/20/51/bag-767346_640.jpg',
-      discount: 'TRENDING'
-    },
-    { 
-        id: 5, 
-        name: 'Designer Denim', 
-        price: 89.99, 
-        image: 'https://cdn.pixabay.com/photo/2014/07/31/23/42/handbag-407198_1280.jpg'
-    },
-
-    { 
-    id: 6, 
-    name: 'Designer Denim', 
-    price: 89.99, 
-    image: 'https://cdn.pixabay.com/photo/2014/07/31/23/42/handbag-407198_640.jpg',
-    }
-  ];
-
   // Sample filter sections
   const filters = [
     {
@@ -86,7 +43,7 @@ const ShopPage = () => {
     const fetchProducts = async () => {
       try {
         const fetchedProducts = await axios.get("https://luxe-store.onrender.com/api/v1/products/get-product")
-        // console.log(fetchedProducts.data.data);
+        console.log(fetchedProducts.data.data);
         if (fetchedProducts) {
           setProductItems(fetchedProducts.data.data)
           // console.log(ProductItems);
