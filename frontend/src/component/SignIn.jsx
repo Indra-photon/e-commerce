@@ -27,10 +27,10 @@ function SignIn() {
             if (loginResponse.data.data) {
                 // Get the token from cookies
                 // console.log(document.cookie);
-                const token = document.cookie
-                .split(';')
-                .find(c => c.trim().startsWith('accessToken='))
-                ?.split('=')[1];
+                // const token = document.cookie
+                // .split(';')
+                // .find(c => c.trim().startsWith('accessToken='))
+                // ?.split('=')[1];
                 
             // Log the token to verify we got it
                 // console.log("Token from cookie:", token);
@@ -39,9 +39,9 @@ function SignIn() {
                     'https://luxe-store.onrender.com/api/v1/users/getuser',
                     { 
                         withCredentials: true,
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
+                        // headers: {
+                        //     Authorization: `Bearer ${token}`
+                        // }
                     }
                 );
 
